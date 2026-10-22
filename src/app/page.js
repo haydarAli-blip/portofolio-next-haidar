@@ -22,6 +22,14 @@ const skills = [
   { nama: "JavaScript", level: "Pemula" },
 ];
 
+const jadwalBelajar = [
+  { hari: "Senin", waktu: "19.00 - 20.00", kegiatan: "Belajar" },
+  { hari: "selasa", waktu: "19.00 - 20.00", kegiatan: "Mengerjakan Tugas Produktif" },
+  { hari: "Rabu", waktu: "19.00 - 22.00", kegiatan: "Mengerjakan PR dan belajar" },
+  { hari: "kamis", waktu: "19.00 - 21.00", kegiatan: "Mengerjakan tugas praktik" },
+  { hari: "Jumat", waktu: "19.30 - 23.30", kegiatan: "Mengerjakan Tugas Mapel Umum" },
+];
+
 export default function Home() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 space-y-6">
@@ -64,6 +72,31 @@ export default function Home() {
           ))}
         </div>
       </Kartu>
-    </main>
+
+      <Kartu judul="Jadwal Belajar">
+        <div className="grid gap-4">
+          {jadwalBelajar.map((item) => (
+            <div
+              key={item.hari}
+              className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm"
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-semibold text-gray-900 capitalize">
+                    {item.hari}
+                  </p>
+                  <p className="text-sm text-gray-500">{item.waktu}</p>
+                </div>
+                <div className="rounded-full bg-biru-muda px-3 py-1">
+                  <span className="text-xs font-semibold text-biru-gelap">
+                    {item.kegiatan}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Kartu>
+    </main>   
   );
 }

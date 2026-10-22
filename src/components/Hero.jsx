@@ -8,9 +8,7 @@ export default function Hero({ nama, tagline }) {
                 alt={`Foto profil ${nama}`}
                 width={180}
                 height={180}
-                className="h-[180px] w-[180px] shrink-0 rounded-full border-4 border-aksen object-cover"
-                priority
-            />
+                className="h-[180px] w-[180px] shrink-0 rounded-full border-4 border-aksen object-cover"            />
             <div>
                 <h1 className="text-3xl font-bold text-utama md:text-5xl">Halo, saya {nama}!</h1>
                 <p className="mt-3 text-lg text-gray-700">{tagline}</p>
