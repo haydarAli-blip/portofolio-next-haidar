@@ -19,9 +19,9 @@ export default function Navbar () {
                 </Link>
                 <ul className="flex flex-wrap gap-x-5 gap-y-2">
                     {menu.map((item) => {
-                        let kelas = "text-gray-200 hover:text-white";
-                        if (pathname === item.href) {
-                            kelas = "font-bold text-white underline underline-offset-8";
+                        let aktif = pathname.startsWith(item.href);
+                        if (item.href === "/") {
+                            aktif = "font-bold text-white underline underline-offset-8";
                         }
                         return (
                             <li key={item.href}>
