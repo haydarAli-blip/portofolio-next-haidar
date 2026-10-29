@@ -1,0 +1,38 @@
+"use client";
+import Link from "next/link"
+import { usePathname } from "next/navigation";
+
+const menu = [
+    { href: "/", tabel: "beranda" },
+    { href: "/tentang", tabel: "Tentang" },
+    { href: "/proyek", tabel: "Proyek" },
+    { href: "/kontak", tabel: "Kontak" },
+];
+
+export default function Navbar () {
+    const pathname = usePathname();
+    return (
+        <header className="bg-utama text-white">
+            <nav className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between">
+                <Link href="/" className="text-xl font-bold">
+                    Haidar Ali Yusuf
+                </Link>
+                <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                    {menu.map((item) => {
+                        let kelas = "text-gray-200 hover:text-white";
+                        if (pathname === item.href) {
+                            kelas = "font-bold text-white underline underline-offset-8";
+                        }
+                        return (
+                            <li key={item.href}>
+                                <Link href={item.href} className={kelas}>
+                                    {item.tabel}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </header>
+    )
+}

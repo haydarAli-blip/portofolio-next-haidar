@@ -1,7 +1,9 @@
 export default function Footer() {
+  const tahun = new Date().getFullYear();
+
   return (
-    <footer className="mt-auto border-t border-gray-200 py-4 text-center text-sm text-gray-600">
-      &copy; {new Date().getFullYear()} Haidar Ali Yusuf
+    <footer className="mt-auto bg-utama p-6 text-center text-lata">
+      <p>&copy; {tahun} Haidar Ali Yusuf</p>
     </footer>
   );
 }
