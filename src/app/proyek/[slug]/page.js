@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
     if (!item) {
         return { title: "Proyek tidak ditemukan" };
     }
-    return { title: item.judul, description: item.deskripsi};
+    return { title: item.judul, description: item.deskripsi };
 }
 
 export default async function DetailProyek({ params }) {
@@ -23,6 +23,18 @@ export default async function DetailProyek({ params }) {
 
     return (
         <main className="mx-auto max-w-3xl px-4 py-10">
+            {/* Breadcrumb Navigation */}
+            <nav className="mb-4 flex items-center gap-2 text-sm text-gray-500">
+                <Link href="/" className="hover:text-utama hover:underline">
+                    Beranda
+                </Link>
+                <span>/</span>
+                <Link href="/proyek" className="hover:text-utama hover:underline">
+                    Proyek
+                </Link>
+                <span>/</span>
+                <span className="font-semibold text-gray-800">{item.judul}</span>
+            </nav>
 
             <Link href="/proyek" className="text-sm font-semibold text-aksen hover:underline">
                 &larr; Kembali ke daftar proyek
@@ -36,14 +48,12 @@ export default async function DetailProyek({ params }) {
                 height={420}
                 loading="eager"
                 className="mt-6 h-auto w-full rounded-xl border border-gray-200"
-
             />
             <p className="mt-6 text-lg">{item.deskripsi}</p>
-            <h2 className="mt-8 text-2xl font-bold text-utama">Yang Saya
-                Pelajari</h2>
+            <h2 className="mt-8 text-2xl font-bold text-utama">Yang Saya Pelajari</h2>
             <ul className="mt-3 list-disc pl-5">
                 {item.fitur.map((f) => (
-                <li key={f}>{f}</li>
+                    <li key={f}>{f}</li>
                 ))}
             </ul>
         </main>
