@@ -8,8 +8,8 @@ export const proyek = [
         deskripsi: "Halaman web pertama saya, dibuat dengan HTML dasar.",
         fitur: [
             "Judul dan paragraf perkenalan dengan h1 dan p",
-            "Foto profil dengan atribut alt",
-            "Daftar hobi dengan ul dan li",
+            "Navigasi dan Pencarian Berita",
+            "Widget Sidebar Multi-konten",
         ],
     },
     {
@@ -52,7 +52,7 @@ export const proyek = [
         ],
     },
     {
-        slug: "porto-haidar",
+        slug: "portofolio-haidar",
         judul: "Portofolio Haidar",
         kategori: "JavaScript",
         minggu: "Minggu 05",
