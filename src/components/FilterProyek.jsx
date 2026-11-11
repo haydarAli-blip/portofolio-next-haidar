@@ -45,7 +45,7 @@ export default function FilterProyek({ proyek }) {
                     value={kata}
                     onChange={(e) => setKata(e.target.value)}
                     placeholder="Contoh: kalkulator"
-                    className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2 md:w-80"
+                    className="mt-1 w-full rounded-lg border border-input bg-card p-2 text-foreground placeholder:text-muted-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-80"
                 />
 
                 {/* Kode 3.6: Tombol Hapus pencarian memakai variant link */}
@@ -61,11 +61,13 @@ export default function FilterProyek({ proyek }) {
             </div>
 
             {/* Jumlah hasil */}
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 text-sm text-muted-foreground">
                 Menampilkan {hasil.length} dari {proyek.length} proyek
             </p>
 
-            <p className="mt-4 text-gray-700">Kategori terpilih: {kategori}</p>
+            <p className="mt-4 text-muted-foreground">
+                Kategori terpilih: <span className="font-semibold text-foreground">{kategori}</span>
+            </p>
 
             {/* Daftar Kartu Proyek */}
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -75,7 +77,7 @@ export default function FilterProyek({ proyek }) {
             </div>
 
             {hasil.length === 0 && (
-                <p className="mt-6 rounded-xl border border-dashed border-gray-300 p-6 text-center text-gray-600">
+                <p className="mt-6 rounded-xl border border-dashed border-input p-6 text-center text-muted-foreground">
                     Belum ada proyek yang cocok
                 </p>
             )}

@@ -33,6 +33,8 @@ const jadwalBelajar = [
   { hari: "Kamis", waktu: "19.00 - 21.00", kegiatan: "Merangkum Modul Ubig" },
 ];
 
+export const revalidate = 60;
+
 export default async function Home() {
   const { data: skills } = await supabase
     .from("skills")
@@ -53,14 +55,14 @@ export default async function Home() {
       />
 
       <Kartu judul="Tentang Saya">
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed">
           Saya tinggal di Pasuruan, Jawa Timur dan senang mencoba hal baru di dunia teknologi. Saya ingin bisa membuat website yang bermanfaat.
         </p>
       </Kartu>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Kartu judul="Hobi">
-          <ul className="list-disc pl-5 space-y-1 text-gray-700">
+          <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
             {hobi.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -68,10 +70,10 @@ export default async function Home() {
         </Kartu>
 
         <Kartu judul="Cita-cita">
-          <p className="mb-2 text-gray-700">
-            Menjadi <strong className="font-semibold text-gray-900">Full Stack Web Developer</strong>. Langkah yang saya rencanakan:
+          <p className="mb-2 text-muted-foreground">
+            Menjadi <strong className="font-semibold text-foreground">Full Stack Web Developer</strong>. Langkah yang saya rencanakan:
           </p>
-          <ol className="list-decimal pl-5 space-y-1 text-gray-700">
+          <ol className="list-decimal pl-5 space-y-1 text-muted-foreground">
             {CitaCita.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -81,7 +83,7 @@ export default async function Home() {
 
       <Kartu judul="Keahlian">
         <div className="grid gap-4 md:grid-cols-3">
-          {skills.map((skill) => (
+          {skills && skills.map((skill) => (
             <SkillCard key={skill.nama} nama={skill.nama} level={skill.level} />
           ))}
         </div>
@@ -103,15 +105,15 @@ export default async function Home() {
                   key={item.hari}
                   className={
                     index !== jadwalBelajar.length - 1
-                      ? "border-b border-gray-100"
+                      ? "border-b border-border"
                       : ""
                   }
                 >
-                  <td className="px-4 py-3.5 font-semibold text-gray-900">
+                  <td className="px-4 py-3.5 font-semibold text-foreground">
                     {item.hari}
                   </td>
-                  <td className="px-4 py-3.5 text-gray-600">{item.waktu}</td>
-                  <td className="px-4 py-3.5 text-gray-600">{item.kegiatan}</td>
+                  <td className="px-4 py-3.5 text-muted-foreground">{item.waktu}</td>
+                  <td className="px-4 py-3.5 text-muted-foreground">{item.kegiatan}</td>
                 </tr>
               ))}
             </tbody>
@@ -120,7 +122,7 @@ export default async function Home() {
       </Kartu>
 
       <section className="mt-10">
-        <h2 className="mb-4 text-2xl font-bold text-utama">Proyek Terbaru</h2>
+        <h2 className="mb-4 text-2xl font-bold text-primary">Proyek Terbaru</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {proyekTerbaru && proyekTerbaru.map((item) => (
             <ProyekCard key={item.slug} proyek={item} />

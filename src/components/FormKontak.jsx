@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const kelasInput = "mt-1 w-full rounded-lg border border-gray-300 bg-white p-2";
+const kelasInput =
+  "mt-1 w-full rounded-lg border border-input bg-card p-2 text-foreground placeholder:text-muted-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 export default function FormKontak() {
   const [nama, setNama] = useState("");
