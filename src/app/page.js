@@ -3,9 +3,8 @@ import Hero from "@/components/Hero";
 import Kartu from "@/components/Kartu";
 import SkillCard from "@/components/SkillCard";
 import ProyekCard from "@/components/ProyekCard";
-import { proyek } from "@/data/proyek";
-
-const proyekTerbaru = proyek.slice(-3);
+import { supabase } from "@/lib/supabase";
+import { buttonVariants } from "@/components/ui/button";
 
 const hobi = [
   "Berlari",
@@ -34,7 +33,13 @@ const jadwalBelajar = [
   { hari: "Kamis", waktu: "19.00 - 21.00", kegiatan: "Merangkum Modul Ubig" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { data: proyekTerbaru } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(3);
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 space-y-6">
       <Hero
@@ -112,11 +117,14 @@ export default function Home() {
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-bold text-utama">Proyek Terbaru</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {proyekTerbaru.map((item) => (
+          {proyekTerbaru && proyekTerbaru.map((item) => (
             <ProyekCard key={item.slug} proyek={item} />
           ))}
         </div>
-        <Link href="/proyek" className="mt-6 inline-block rounded-lg bg-utama px-5 py-2 font-semibold text-white">
+        <Link
+          href="/proyek"
+          className={buttonVariants({ size: "lg", className: "mt-6" })}
+        >
           Lihat semua proyek
         </Link>
       </section>

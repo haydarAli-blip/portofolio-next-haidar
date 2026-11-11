@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import ProyekCard from "@/components/ProyekCard";
 
 const daftarKategori = ["Semua", "HTML", "CSS", "JavaScript"];
-const tombolBiasa = "rounded-full border border-utama px-4 py-1 text-sm font-semibold text-utama";
-const tombolAktif = "rounded-full border border-aksen bg-aksen px-4 py-1 text-sm font-semibold text-white";
 
 export default function FilterProyek({ proyek }) {
     const [kategori, setKategori] = useState("Semua");
@@ -22,17 +21,16 @@ export default function FilterProyek({ proyek }) {
 
     return (
         <div className="mt-8">
-            {/* Tombol Kategori */}
+            {/* Kode 3.5: Tombol Kategori memakai Button */}
             <div className="flex flex-wrap gap-2">
                 {daftarKategori.map((k) => (
-                    <button
+                    <Button
                         key={k}
-                        type="button"
+                        variant={kategori === k ? "default" : "outline"}
                         onClick={() => setKategori(k)}
-                        className={kategori === k ? tombolAktif : tombolBiasa}
                     >
                         {k}
-                    </button>
+                    </Button>
                 ))}
             </div>
 
@@ -50,19 +48,19 @@ export default function FilterProyek({ proyek }) {
                     className="mt-1 w-full rounded-lg border border-gray-300 bg-white p-2 md:w-80"
                 />
 
-                {/* Kode 6.6: Tombol Hapus pencarian */}
+                {/* Kode 3.6: Tombol Hapus pencarian memakai variant link */}
                 {kata !== "" && (
-                    <button
-                        type="button"
+                    <Button
+                        variant="link"
                         onClick={() => setKata("")}
-                        className="mt-2 text-sm font-semibold text-aksen dark:text-red-300 hover:underline block"
+                        className="mt-2 px-0 text-aksen"
                     >
                         Hapus pencarian
-                    </button>
+                    </Button>
                 )}
             </div>
 
-            {/* Kode 6.7: Jumlah hasil */}
+            {/* Jumlah hasil */}
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
                 Menampilkan {hasil.length} dari {proyek.length} proyek
             </p>

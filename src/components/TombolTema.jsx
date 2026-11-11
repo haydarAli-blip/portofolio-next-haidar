@@ -9,7 +9,6 @@ export default function TombolTema() {
   useEffect(() => {
     if (localStorage.getItem("tema") === "gelap") {
       document.documentElement.classList.add("dark");
-      setGelap(true);
     }
   }, []);
 
