@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const kelasInput = "mt-1 w-full rounded-lg border border-gray-300 bg-white p-2";
 
@@ -150,12 +151,9 @@ export default function FormKontak() {
       </div>
 
       {/* Tombol Kirim */}
-      <button
-        type="submit"
-        className="rounded-lg bg-utama px-5 py-2 font-semibold text-white hover:opacity-90"
-      >
-        Kirim
-      </button>
+      <Button type="submit" size="lg">
+        Kirim Pesan
+      </Button>
     </form>
   );
 }

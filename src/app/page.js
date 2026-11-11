@@ -34,6 +34,11 @@ const jadwalBelajar = [
 ];
 
 export default async function Home() {
+  const { data: skills } = await supabase
+    .from("skills")
+    .select("*")
+    .order("id");
+
   const { data: proyekTerbaru } = await supabase
     .from("projects")
     .select("*")
